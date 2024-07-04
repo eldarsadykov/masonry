@@ -51,7 +51,7 @@ fs.readFile(htmlFilePath, "utf8", (err, htmlContent) => {
   const document = dom.window.document;
 
   // Manipulate the DOM ====================================================================================
-  const columnVariants = 3;
+  const columnVariants = 4;
 
   for (n = 0; n < columnVariants; n++) {
     const numberOfColumns = n + 1;
