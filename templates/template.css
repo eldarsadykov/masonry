@@ -68,11 +68,6 @@ ul {
 .image {
   width: 100%;
   margin-bottom: var(--gap);
-  transition: opacity 0.3s;
-  &:hover {
-    opacity: 0.4;
-    cursor: pointer;
-  }
 }
 
 .grid {
