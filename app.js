@@ -8,7 +8,7 @@ const htmlFilePath = path.join(__dirname, "templates/template.html");
 const cssFilePath = path.join(__dirname, "templates/template.css");
 const imageDirectory = path.join(__dirname, "images");
 
-const grids = [0, 576, 992, 1400];
+const grids = [0, 768, 1200, 1600];
 
 const images = [];
 
@@ -89,6 +89,7 @@ fs.readFile(htmlFilePath, "utf8", (err, htmlContent) => {
         const img = document.createElement("img");
         img.className = "image";
         img.src = `images/${image.file}`;
+        img.setAttribute("data-aos", "fade-up");
         gridColumn.appendChild(img);
       }
       grid.appendChild(gridColumn);
