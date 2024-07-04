@@ -109,3 +109,23 @@ fs.readFile(htmlFilePath, "utf8", (err, htmlContent) => {
     console.log("Updated HTML file has been saved.");
   });
 });
+
+console.log(gridMediaQuery(5, 1, 768));
+
+function gridMediaQuery(maxNumberOfColumns, gridIndex, minWidth) {
+  let cssString = `
+@media screen and (min-width: ${minWidth}px) {
+  .grid {
+    grid-template-columns: repeat(${gridIndex + 1}, 1fr);
+  }
+`;
+  for (i = 0; i < maxNumberOfColumns; i++) {
+    cssString += `
+  #grid-${i + 1} {
+    display: ${i === gridIndex ? "grid" : "none"};
+  }
+`;
+  }
+  cssString += "}";
+  return cssString;
+}
