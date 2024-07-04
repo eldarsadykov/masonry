@@ -16,95 +16,13 @@ body {
 .image {
   width: 100%;
   margin-bottom: var(--gap);
+  transition: opacity 0.3s;
+  &:hover {
+    opacity: 0.4;
+  }
 }
 
 .grid {
   column-gap: var(--gap);
   margin: var(--gap);
-}
-
-@media screen and (min-width: 0px) {
-  .grid {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  #grid-1 {
-    display: grid;
-  }
-
-  #grid-2 {
-    display: none;
-  }
-
-  #grid-3 {
-    display: none;
-  }
-
-  #grid-4 {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  #grid-1 {
-    display: none;
-  }
-
-  #grid-2 {
-    display: grid;
-  }
-
-  #grid-3 {
-    display: none;
-  }
-
-  #grid-4 {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 1200px) {
-  .grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  #grid-1 {
-    display: none;
-  }
-
-  #grid-2 {
-    display: none;
-  }
-
-  #grid-3 {
-    display: grid;
-  }
-  #grid-4 {
-    display: none;
-  }
-}
-
-@media screen and (min-width: 1600px) {
-  .grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  #grid-1 {
-    display: none;
-  }
-
-  #grid-2 {
-    display: none;
-  }
-
-  #grid-3 {
-    display: none;
-  }
-  #grid-4 {
-    display: grid;
-  }
 }

@@ -6,7 +6,10 @@ const { file } = require("babel-types");
 
 // Define the path to your existing HTML file
 const htmlFilePath = path.join(__dirname, "template.html");
+const cssFilePath = path.join(__dirname, "template.css");
 const imageDirectory = path.join(__dirname, "images");
+
+const gridVariants = [0, 768, 1200];
 
 const images = [];
 
@@ -51,9 +54,7 @@ fs.readFile(htmlFilePath, "utf8", (err, htmlContent) => {
   const document = dom.window.document;
 
   // Manipulate the DOM ====================================================================================
-  const columnVariants = 4;
-
-  for (n = 0; n < columnVariants; n++) {
+  for (n = 0; n < gridVariants.length; n++) {
     const numberOfColumns = n + 1;
     const cols = [];
     for (i = 0; i < numberOfColumns; i++) cols.push([]);
@@ -110,7 +111,32 @@ fs.readFile(htmlFilePath, "utf8", (err, htmlContent) => {
   });
 });
 
-console.log(gridMediaQuery(5, 1, 768));
+fs.readFile(cssFilePath, "utf8", (err, cssContent) => {
+  if (err) {
+    console.error("Error reading CSS file:", err);
+    return;
+  }
+
+  let updatedCssContent = cssContent;
+
+  for (gridIndex in gridVariants) {
+    updatedCssContent += gridMediaQuery(
+      gridVariants.length,
+      parseInt(gridIndex),
+      gridVariants[gridIndex]
+    );
+  }
+
+  // Write the updated CSS content to a new file
+  const outputFilePath = path.join(__dirname, "style.css");
+  fs.writeFile(outputFilePath, updatedCssContent, "utf8", (err) => {
+    if (err) {
+      console.error("Error writing updated CSS file:", err);
+      return;
+    }
+    console.log("Updated CSS file has been saved.");
+  });
+});
 
 function gridMediaQuery(maxNumberOfColumns, gridIndex, minWidth) {
   let cssString = `
