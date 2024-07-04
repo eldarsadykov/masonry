@@ -82,15 +82,22 @@ fs.readFile(htmlFilePath, "utf8", (err, htmlContent) => {
       const gridColumn = document.createElement("div");
       gridColumn.className = "col";
       for (const image of col) {
+        const imgPath = `images/${image.file}`;
+        const imgLink = document.createElement("a");
+        imgLink.href = imgPath;
+        imgLink.target = "_blank";
+
         // const filenameText = document.createElement("h1");
         // filenameText.textContent = image.file;
         // gridColumn.appendChild(filenameText);
 
         const img = document.createElement("img");
         img.className = "image";
-        img.src = `images/${image.file}`;
+        img.src = imgPath;
         img.setAttribute("data-aos", "fade-up");
-        gridColumn.appendChild(img);
+
+        imgLink.appendChild(img);
+        gridColumn.appendChild(imgLink);
       }
       grid.appendChild(gridColumn);
     });
