@@ -152,6 +152,6 @@ function gridMediaQuery(maxNumberOfColumns, gridIndex, minWidth) {
   }
 `;
   }
-  cssString += "}";
+  cssString += "}\n";
   return cssString;
 }
