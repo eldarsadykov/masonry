@@ -95,7 +95,8 @@ fs.readFile(htmlFilePath, "utf8", (err, htmlContent) => {
       grid.appendChild(gridColumn);
     });
 
-    document.body.appendChild(grid);
+    const gallery = document.getElementById("gallery");
+    gallery.appendChild(grid);
   }
   // Serialize the DOM back to HTML ====================================================================================
   const updatedHtmlContent = dom.serialize();
