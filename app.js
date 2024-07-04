@@ -94,6 +94,7 @@ fs.readFile(htmlFilePath, "utf8", (err, htmlContent) => {
         const img = document.createElement("img");
         img.className = "image";
         img.src = imgPath;
+        img.setAttribute("loading", "lazy");
         img.setAttribute("data-aos", "fade-up");
 
         imgLink.appendChild(img);
