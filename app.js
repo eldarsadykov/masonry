@@ -2,7 +2,6 @@ const { JSDOM } = require("jsdom");
 const fs = require("fs");
 const path = require("path");
 const sizeOf = require("image-size");
-const { file } = require("babel-types");
 
 // Define the path to your existing HTML file
 const htmlFilePath = path.join(__dirname, "templates/template.html");
