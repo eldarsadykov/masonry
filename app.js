@@ -5,8 +5,8 @@ const sizeOf = require("image-size");
 const { file } = require("babel-types");
 
 // Define the path to your existing HTML file
-const htmlFilePath = path.join(__dirname, "template.html");
-const cssFilePath = path.join(__dirname, "template.css");
+const htmlFilePath = path.join(__dirname, "templates/index.html");
+const cssFilePath = path.join(__dirname, "templates/style.css");
 const imageDirectory = path.join(__dirname, "images");
 
 const grids = [0, 768, 1200];
