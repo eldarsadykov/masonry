@@ -9,7 +9,7 @@ const htmlFilePath = path.join(__dirname, "template.html");
 const cssFilePath = path.join(__dirname, "template.css");
 const imageDirectory = path.join(__dirname, "images");
 
-const gridVariants = [0, 768, 1200];
+const grids = [0, 768, 1200];
 
 const images = [];
 
@@ -54,7 +54,7 @@ fs.readFile(htmlFilePath, "utf8", (err, htmlContent) => {
   const document = dom.window.document;
 
   // Manipulate the DOM ====================================================================================
-  for (n = 0; n < gridVariants.length; n++) {
+  for (n = 0; n < grids.length; n++) {
     const numberOfColumns = n + 1;
     const cols = [];
     for (i = 0; i < numberOfColumns; i++) cols.push([]);
@@ -75,9 +75,9 @@ fs.readFile(htmlFilePath, "utf8", (err, htmlContent) => {
       colIndex = cols.reduce(callback, colIndex);
     }
 
-    const gridVariant = document.createElement("div");
-    gridVariant.className = "grid";
-    gridVariant.classList.add(`grid--${numberOfColumns}`);
+    const grid = document.createElement("div");
+    grid.className = "grid";
+    grid.classList.add(`grid--${numberOfColumns}`);
 
     cols.forEach((col) => {
       const gridColumn = document.createElement("div");
@@ -92,10 +92,10 @@ fs.readFile(htmlFilePath, "utf8", (err, htmlContent) => {
         img.src = `images/${image.file}`;
         gridColumn.appendChild(img);
       }
-      gridVariant.appendChild(gridColumn);
+      grid.appendChild(gridColumn);
     });
 
-    document.body.appendChild(gridVariant);
+    document.body.appendChild(grid);
   }
   // Serialize the DOM back to HTML ====================================================================================
   const updatedHtmlContent = dom.serialize();
@@ -118,13 +118,8 @@ fs.readFile(cssFilePath, "utf8", (err, cssContent) => {
   }
 
   let updatedCssContent = cssContent;
-
-  for (gridIndex in gridVariants) {
-    updatedCssContent += gridMediaQuery(
-      gridVariants.length,
-      parseInt(gridIndex),
-      gridVariants[gridIndex]
-    );
+  for (i in grids) {
+    updatedCssContent += gridMediaQuery(grids.length, parseInt(i), grids[i]);
   }
 
   // Write the updated CSS content to a new file
