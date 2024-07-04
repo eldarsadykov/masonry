@@ -77,7 +77,7 @@ fs.readFile(htmlFilePath, "utf8", (err, htmlContent) => {
 
     const gridVariant = document.createElement("div");
     gridVariant.className = "grid";
-    gridVariant.id = `grid-${numberOfColumns}`;
+    gridVariant.classList.add(`grid--${numberOfColumns}`);
 
     cols.forEach((col) => {
       const gridColumn = document.createElement("div");
@@ -147,7 +147,7 @@ function gridMediaQuery(maxNumberOfColumns, gridIndex, minWidth) {
 `;
   for (i = 0; i < maxNumberOfColumns; i++) {
     cssString += `
-  #grid-${i + 1} {
+  .grid--${i + 1} {
     display: ${i === gridIndex ? "grid" : "none"};
   }
 `;
