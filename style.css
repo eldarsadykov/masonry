@@ -84,7 +84,7 @@ ul {
     height: 3rem;
   }
 
-  .nav__links li a {
+  .nav__links {
     font-size: 1.125rem;
   }
   #gallery {
