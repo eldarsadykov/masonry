@@ -25,7 +25,7 @@ jobs:
         run: node app.js
 
       - name: Create test file
-        run: echo hello world > test.txt
+        run: echo hello world > ./test.txt
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
